@@ -50,9 +50,9 @@ macro += 'WAIT SECONDS=10' + '\n';
 
 var pos = 0;
 
-for (i=0; i < 10; i++) {
+for (i=0; i < 20; i++) {
 
-	for (j=0; j < 25; j++) {
+	for (j=0; j < 10; j++) {
 		macro += 'TAG POS=' + pos + ' TYPE=A ATTR=CLASS:userAvatarBadge__usernameLink EXTRACT=HREF' + '\n';
 		macro += 'SAVEAS TYPE=EXTRACT FOLDER=* FILE=soundcloud.csv' + '\n';
 
