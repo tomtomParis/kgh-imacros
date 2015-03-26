@@ -1,0 +1,43 @@
+' Mass follow Twitter profiles for a certain keyword
+' This macro was recorded using the Experimental option
+' To learn more about iMacros: http://bit.ly/1CImBoM
+
+VERSION BUILD=8890130 RECORDER=FX
+
+' 1. INITIALIZATION
+
+TAB T=1
+TAB CLOSEALLOTHERS
+URL GOTO=https://twitter.com/search?q=sales&src=typd&mode=users
+
+' 2. FOLLOW THE FIRST 10 PROFILES
+
+EVENT TYPE=CLICK SELECTOR="HTML>BODY>DIV:nth-of-type(2)>DIV:nth-of-type(2)>DIV>DIV:nth-of-type(3)>DIV:nth-of-type(2)>DIV:nth-of-type(2)>OL>LI:nth-of-type(1)>DIV>DIV>BUTTON" BUTTON=0
+WAIT SECONDS=4
+
+EVENT TYPE=CLICK SELECTOR="HTML>BODY>DIV:nth-of-type(2)>DIV:nth-of-type(2)>DIV>DIV:nth-of-type(3)>DIV:nth-of-type(2)>DIV:nth-of-type(2)>OL>LI:nth-of-type(2)>DIV>DIV>BUTTON" BUTTON=0
+WAIT SECONDS=4
+
+EVENT TYPE=CLICK SELECTOR="HTML>BODY>DIV:nth-of-type(2)>DIV:nth-of-type(2)>DIV>DIV:nth-of-type(3)>DIV:nth-of-type(2)>DIV:nth-of-type(2)>OL>LI:nth-of-type(3)>DIV>DIV>BUTTON" BUTTON=0
+WAIT SECONDS=4
+
+EVENT TYPE=CLICK SELECTOR="HTML>BODY>DIV:nth-of-type(2)>DIV:nth-of-type(2)>DIV>DIV:nth-of-type(3)>DIV:nth-of-type(2)>DIV:nth-of-type(2)>OL>LI:nth-of-type(4)>DIV>DIV>BUTTON" BUTTON=0
+WAIT SECONDS=4
+
+EVENT TYPE=CLICK SELECTOR="HTML>BODY>DIV:nth-of-type(2)>DIV:nth-of-type(2)>DIV>DIV:nth-of-type(3)>DIV:nth-of-type(2)>DIV:nth-of-type(2)>OL>LI:nth-of-type(5)>DIV>DIV>BUTTON" BUTTON=0
+WAIT SECONDS=4
+
+EVENT TYPE=CLICK SELECTOR="HTML>BODY>DIV:nth-of-type(2)>DIV:nth-of-type(2)>DIV>DIV:nth-of-type(3)>DIV:nth-of-type(2)>DIV:nth-of-type(2)>OL>LI:nth-of-type(6)>DIV>DIV>BUTTON" BUTTON=0
+WAIT SECONDS=4
+
+EVENT TYPE=CLICK SELECTOR="HTML>BODY>DIV:nth-of-type(2)>DIV:nth-of-type(2)>DIV>DIV:nth-of-type(3)>DIV:nth-of-type(2)>DIV:nth-of-type(2)>OL>LI:nth-of-type(7)>DIV>DIV>BUTTON" BUTTON=0
+WAIT SECONDS=4
+
+EVENT TYPE=CLICK SELECTOR="HTML>BODY>DIV:nth-of-type(2)>DIV:nth-of-type(2)>DIV>DIV:nth-of-type(3)>DIV:nth-of-type(2)>DIV:nth-of-type(2)>OL>LI:nth-of-type(8)>DIV>DIV>BUTTON" BUTTON=0
+WAIT SECONDS=4
+
+EVENT TYPE=CLICK SELECTOR="HTML>BODY>DIV:nth-of-type(2)>DIV:nth-of-type(2)>DIV>DIV:nth-of-type(3)>DIV:nth-of-type(2)>DIV:nth-of-type(2)>OL>LI:nth-of-type(9)>DIV>DIV>BUTTON" BUTTON=0
+WAIT SECONDS=4
+
+EVENT TYPE=CLICK SELECTOR="HTML>BODY>DIV:nth-of-type(2)>DIV:nth-of-type(2)>DIV>DIV:nth-of-type(3)>DIV:nth-of-type(2)>DIV:nth-of-type(2)>OL>LI:nth-of-type(10)>DIV>DIV>BUTTON" BUTTON=0
+WAIT SECONDS=4
