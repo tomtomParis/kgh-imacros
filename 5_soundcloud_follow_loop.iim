@@ -1,0 +1,41 @@
+' Follow every followers of a specific SoundCloud Profile (see macro 4)
+' You must place the CSV file 
+' To learn more about iMacros: http://bit.ly/1CImBoM
+
+
+VERSION BUILD=8890130 RECORDER=FX
+
+
+' 1. INITIALIZATION
+
+
+TAB T=1
+
+SET !TIMEOUT_STEP 2
+
+SET !TIMEOUT_TAG 2
+
+SET !TIMEOUT_PAGE 45
+
+SET !ERRORIGNORE YES
+
+SET !DATASOURCE soundcloud.csv
+
+SET !DATASOURCE_COLUMNS 1
+
+SET !LOOP 1
+
+SET !DATASOURCE_LINE {{!LOOP}}
+
+
+' 1. MASS FOLLOWING
+
+
+URL GOTO={{!COL1}}
+
+WAIT SECONDS=2
+
+EVENT TYPE=CLICK SELECTOR="HTML>BODY>DIV>DIV:nth-of-type(2)>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>BUTTON" BUTTON=0
+
+WAIT SECONDS=2
+

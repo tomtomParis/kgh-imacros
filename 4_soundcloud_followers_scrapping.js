@@ -54,7 +54,7 @@ for (i=0; i < 10; i++) {
 
 	for (j=0; j < 25; j++) {
 		macro += 'TAG POS=' + pos + ' TYPE=A ATTR=CLASS:userAvatarBadge__usernameLink EXTRACT=HREF' + '\n';
-		macro += 'SAVEAS TYPE=EXTRACT FOLDER=* FILE=SOUNDCLOUD.CSV' + '\n';
+		macro += 'SAVEAS TYPE=EXTRACT FOLDER=* FILE=soundcloud.csv' + '\n';
 
 		pos++;
 	}
