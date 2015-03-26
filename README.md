@@ -9,5 +9,5 @@ Before running the following macros make sure:
 
 * [x] Twitter: Mass Following. **(.iim)**
 * [x] Linkedin: Profile Auto View. **(.js)**
-* [x] SoundCloud: Followers Scrapping. **(.iim)**
-* [x] SoundCloud: Mass Following. **(.js)**
+* [x] SoundCloud: Followers Scrapping. **(.js)**
+* [x] SoundCloud: Mass Following. **(.iim**
