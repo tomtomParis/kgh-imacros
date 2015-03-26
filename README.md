@@ -9,4 +9,5 @@ Before running the following macros make sure:
 
 * [x] Twitter: Mass Following. **(.iim)**
 * [x] Linkedin: Profile Auto View. **(.js)**
-* [ ] Twitter: Scrap tweets for a certain profile and save them in a CSV file. **(.js)**
+* [x] SoundCloud: Followers Scrapping. **(.iim)**
+* [x] SoundCloud: Followers Scrapping. **(.js)**
