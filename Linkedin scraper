@@ -1,0 +1,90 @@
+// Auto-visit profiles on Linkedin with iMacros
+// Configure your linkedin credentials, the group and your proxy if needed.
+// To learn more about iMacros: http://bit.ly/1CImBoM
+
+
+// 1. Variables Initialization
+
+
+var macro, linkedinEmail, linkedinPassword, linkedinSearch, nbr_pages, nbr_profiles;
+
+macro = '';
+
+linkedinEmail = 'c2prods@gmail.com';
+
+linkedinPassword = 'SalutKGH';
+
+linkedinSearch = 'https://www.linkedin.com/vsearch/p?f_CC=1112%2C3093%2C3673%2C6902%2C8238%2C8331%2C25630%2C57188%2C340875%2C407323%2C509821%2C603115%2C947572%2C2625246%2C2928020%2C3165553%2C1110&trk=rr_connectedness'
+
+
+// 2. Macro Initialization
+
+
+macro += 'CODE:' + '\n';
+
+macro += 'SET !TIMEOUT_STEP 2' + '\n';
+
+macro += 'SET !TIMEOUT_TAG 2' + '\n';
+
+macro += 'SET !TIMEOUT_PAGE 45' + '\n';
+
+macro += 'SET !ERRORIGNORE YES' + '\n';
+
+
+// 3. Clear Cookies, Cache and Set a Proxy
+
+
+macro += "CLEAR" + "\n";
+
+
+// 4. Linkedin Sign In
+
+macro += 'TAB T=1' + '\n';
+
+macro += 'URL GOTO=https://www.linkedin.com/nhome/' + '\n';
+
+macro += 'EVENT TYPE=CLICK SELECTOR="#session_key-login" BUTTON=0' + '\n';
+
+macro += 'EVENTS TYPE=KEYPRESS SELECTOR="#session_key-login" CHARS="' + linkedinEmail + '"' + '\n';
+
+macro += 'EVENT TYPE=KEYPRESS SELECTOR="#session_key-login" KEY=9' + '\n';
+
+macro += 'SET !ENCRYPTION NO' + '\n';
+
+macro += 'EVENTS TYPE=KEYPRESS SELECTOR="#session_password-login" CHARS="' + linkedinPassword + '"' + '\n';
+
+macro += 'EVENT TYPE=KEYPRESS SELECTOR="#session_password-login" KEY=13' + '\n';
+
+
+// 5. Extract data
+
+
+macro += 'WAIT SECONDS=2' + '\n';
+
+macro += 'URL GOTO=' + linkedinSearch + '\n';
+
+for (nbr_pages = 0; nbr_pages <= 9; nbr_pages++) {
+	
+	macro += 'WAIT SECONDS=5' + '\n';
+	
+	for (nbr_profiles = 0; nbr_profiles <= 10; nbr_profiles++) {
+		
+		macro += 'TAG POS=' + nbr_profiles + ' TYPE=A ATTR=CLASS:title EXTRACT=TXT' + '\n';
+	
+		macro += 'TAG POS=' + nbr_profiles + ' TYPE=A ATTR=CLASS:title EXTRACT=HREF' + '\n';
+			
+		macro += 'TAG POS=' + nbr_profiles + ' TYPE=DIV ATTR=CLASS:description EXTRACT=TXT' + '\n';
+		
+		macro += 'SAVEAS TYPE=EXTRACT FOLDER=* FILE=linkedin.csv' + '\n';
+	
+	}
+	
+	macro += 'TAG POS=1 TYPE=A ATTR=REL:next&&CLASS:page-link' + '\n';
+	
+}
+
+// 6. Run The Macro
+
+iimDisplay("iMacro is now running. Let's hack growth.");
+
+iimPlay(macro);
