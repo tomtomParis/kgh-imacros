@@ -1,0 +1,86 @@
+// Email the last Facebook fans through Gmail.
+// Be careful, you need to rename and set the extension of your macro to '.js'.
+
+
+// 1. Variables Initialization.
+
+
+var macro, emails, names;
+
+macro = '';
+
+emails = ["tuveuxdescoups@facebook.com", "Momodjehlane@facebook.com", "bastin.christophe@facebook.com", "caroline.sueur.9@facebook.com", "lolobipup.angioi@facebook.com", "tonyfz2013@facebook.com", "francois.truong@facebook.com", "mbuchmuller@facebook.com", "mariebriannebryan@facebook.com", "adrien.jourdan.75@facebook.com", "aminabelghiti@facebook.com", "louis.cascio@facebook.com", "venault.jeanaime@facebook.com", "gaetan.duron.3@facebook.com", "claire.baeza22@facebook.com", "lilo.decib@facebook.com"];
+names = ["Khalid", "Milky", "Bastin", "Caroline", "Laurena", "Toni", "François", "Meriadec", "Marie", "Адриен", "Amina", "Louis", "Venault", "Gaetan", "Claire", "Lilo"];
+
+
+// 2. Built-in Variables & Macro Initialization.
+
+
+macro += 'CODE:' + '\n';
+
+macro += 'SET !TIMEOUT_STEP 2' + '\n';
+
+macro += 'SET !TIMEOUT_TAG 2' + '\n';
+
+macro += 'SET !TIMEOUT_PAGE 45' + '\n';
+
+macro += 'SET !ERRORIGNORE YES' + '\n';
+
+
+// 3. Open Gmail.
+
+
+macro += 'TAB T=1' + '\n';
+
+macro += 'TAB CLOSEALLOTHERS' + '\n';
+
+macro += 'URL GOTO=https://www.google.com/' + '\n';
+macro += 'URL GOTO=https://mail.google.com/mail/u/0/#inbox' + '\n';
+
+
+// 4. Send an email to every new fan.
+
+
+for ( var i = 0; i < emails.length; i++ ) {
+	macro += 'REFRESH' + '\n';
+	macro += 'EVENT TYPE=CLICK SELECTOR="HTML>BODY>DIV:nth-of-type(7)>DIV:nth-of-type(3)>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV" BUTTON=0' + '\n';
+	macro += 'WAIT SECONDS=5' + '\n';
+
+  // set recipient and title
+	macro += 'EVENTS TYPE=KEYPRESS SELECTOR="HTML>BODY>DIV:nth-of-type(10)>DIV>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD:nth-of-type(2)>FORM>DIV>TABLE>TBODY>TR>TD:nth-of-type(2)>DIV>DIV>TEXTAREA" CHARS="' + emails[i] + '"' + '\n';
+	macro += 'EVENT TYPE=CLICK SELECTOR="HTML>BODY>DIV:nth-of-type(10)>DIV>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD:nth-of-type(2)>FORM>DIV:nth-of-type(3)>INPUT" BUTTON=0' + '\n';
+	macro += 'EVENTS TYPE=KEYPRESS SELECTOR="HTML>BODY>DIV:nth-of-type(10)>DIV>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD:nth-of-type(2)>FORM>DIV:nth-of-type(3)>INPUT" CHARS="Merci ' + names[i] + ' de suivre TheFamily sur Facebook :)"' + '\n';
+	macro += 'WAIT SECONDS=5' + '\n';
+
+  // set body message
+	macro += 'EVENT TYPE=CLICK SELECTOR="HTML>BODY>DIV:nth-of-type(10)>DIV>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD:nth-of-type(2)>TABLE>TBODY>TR>TD>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>TABLE>TBODY>TR>TD:nth-of-type(2)>DIV:nth-of-type(2)>DIV" BUTTON=0' + '\n';
+	macro += 'EVENTS TYPE=KEYPRESS SELECTOR="HTML>BODY>DIV:nth-of-type(10)>DIV>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD:nth-of-type(2)>TABLE>TBODY>TR>TD>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>TABLE>TBODY>TR>TD:nth-of-type(2)>DIV:nth-of-type(2)>DIV" CHARS="Hello ' + names[i] + ' :)"' + '\n';
+	macro += 'EVENTS TYPE=KEYPRESS SELECTOR="HTML>BODY>DIV:nth-of-type(10)>DIV>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD:nth-of-type(2)>TABLE>TBODY>TR>TD>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>TABLE>TBODY>TR>TD:nth-of-type(2)>DIV:nth-of-type(2)>DIV" KEYS="[13,13]"' + '\n';
+	macro += 'EVENTS TYPE=KEYPRESS SELECTOR="HTML>BODY>DIV:nth-of-type(10)>DIV>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD:nth-of-type(2)>TABLE>TBODY>TR>TD>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>TABLE>TBODY>TR>TD:nth-of-type(2)>DIV:nth-of-type(2)>DIV" CHARS="Tu viens tout juste de liker TheFamily sur Facebook et on t\'en remercie ! ;-)"' + '\n';
+	macro += 'EVENTS TYPE=KEYPRESS SELECTOR="HTML>BODY>DIV:nth-of-type(10)>DIV>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD:nth-of-type(2)>TABLE>TBODY>TR>TD>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>TABLE>TBODY>TR>TD:nth-of-type(2)>DIV:nth-of-type(2)>DIV" KEYS="[13,13]"' + '\n';
+	macro += 'EVENTS TYPE=KEYPRESS SELECTOR="HTML>BODY>DIV:nth-of-type(10)>DIV>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD:nth-of-type(2)>TABLE>TBODY>TR>TD>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>TABLE>TBODY>TR>TD:nth-of-type(2)>DIV:nth-of-type(2)>DIV" CHARS="On t\'invite à regarder cette vidéo pour en savoir plus sur qui nous sommes :"' + '\n';
+	macro += 'EVENTS TYPE=KEYPRESS SELECTOR="HTML>BODY>DIV:nth-of-type(10)>DIV>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD:nth-of-type(2)>TABLE>TBODY>TR>TD>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>TABLE>TBODY>TR>TD:nth-of-type(2)>DIV:nth-of-type(2)>DIV" KEYS="[13]"' + '\n';
+	macro += 'EVENTS TYPE=KEYPRESS SELECTOR="HTML>BODY>DIV:nth-of-type(10)>DIV>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD:nth-of-type(2)>TABLE>TBODY>TR>TD>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>TABLE>TBODY>TR>TD:nth-of-type(2)>DIV:nth-of-type(2)>DIV" CHARS="https://goo.gl/b6os6D"' + '\n';
+	macro += 'EVENTS TYPE=KEYPRESS SELECTOR="HTML>BODY>DIV:nth-of-type(10)>DIV>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD:nth-of-type(2)>TABLE>TBODY>TR>TD>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>TABLE>TBODY>TR>TD:nth-of-type(2)>DIV:nth-of-type(2)>DIV" KEYS="[13,13]"' + '\n';
+	macro += 'EVENTS TYPE=KEYPRESS SELECTOR="HTML>BODY>DIV:nth-of-type(10)>DIV>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD:nth-of-type(2)>TABLE>TBODY>TR>TD>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>TABLE>TBODY>TR>TD:nth-of-type(2)>DIV:nth-of-type(2)>DIV" CHARS="Et n\'oublie pas de t\'abonner à notre chaîne YouTube pour ne rien manquer :"' + '\n';
+	macro += 'EVENTS TYPE=KEYPRESS SELECTOR="HTML>BODY>DIV:nth-of-type(10)>DIV>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD:nth-of-type(2)>TABLE>TBODY>TR>TD>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>TABLE>TBODY>TR>TD:nth-of-type(2)>DIV:nth-of-type(2)>DIV" KEYS="[13]"' + '\n';
+	macro += 'EVENTS TYPE=KEYPRESS SELECTOR="HTML>BODY>DIV:nth-of-type(10)>DIV>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD:nth-of-type(2)>TABLE>TBODY>TR>TD>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>TABLE>TBODY>TR>TD:nth-of-type(2)>DIV:nth-of-type(2)>DIV" CHARS="http://goo.gl/gukwSC"' + '\n';
+	macro += 'EVENTS TYPE=KEYPRESS SELECTOR="HTML>BODY>DIV:nth-of-type(10)>DIV>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD:nth-of-type(2)>TABLE>TBODY>TR>TD>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>TABLE>TBODY>TR>TD:nth-of-type(2)>DIV:nth-of-type(2)>DIV" KEYS="[13,13]"' + '\n';
+	macro += 'EVENTS TYPE=KEYPRESS SELECTOR="HTML>BODY>DIV:nth-of-type(10)>DIV>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD:nth-of-type(2)>TABLE>TBODY>TR>TD>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>TABLE>TBODY>TR>TD:nth-of-type(2)>DIV:nth-of-type(2)>DIV" CHARS="À bientôt :)"' + '\n';
+	macro += 'EVENTS TYPE=KEYPRESS SELECTOR="HTML>BODY>DIV:nth-of-type(10)>DIV>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD:nth-of-type(2)>TABLE>TBODY>TR>TD>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>TABLE>TBODY>TR>TD:nth-of-type(2)>DIV:nth-of-type(2)>DIV" KEYS="[13,13]"' + '\n';
+	macro += 'EVENTS TYPE=KEYPRESS SELECTOR="HTML>BODY>DIV:nth-of-type(10)>DIV>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD:nth-of-type(2)>TABLE>TBODY>TR>TD>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>TABLE>TBODY>TR>TD:nth-of-type(2)>DIV:nth-of-type(2)>DIV" CHARS="Julien Le Coupanec, Growth Hacker à TheFamily"' + '\n';
+	macro += 'WAIT SECONDS=5' + '\n';
+
+  // send the email
+	macro += 'EVENT TYPE=CLICK SELECTOR="HTML>BODY>DIV:nth-of-type(10)>DIV>DIV>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(3)>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD:nth-of-type(2)>TABLE>TBODY>TR:nth-of-type(2)>TD>DIV>DIV>DIV:nth-of-type(4)>TABLE>TBODY>TR>TD>DIV>DIV:nth-of-type(2)" BUTTON=0' + '\n';
+	macro += 'WAIT SECONDS=30' + '\n';
+}
+
+
+
+// 8. Run the Macro.
+
+
+iimDisplay('iMacro is now running.');
+
+iimPlay(macro);
